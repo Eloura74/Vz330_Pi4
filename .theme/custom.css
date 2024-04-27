@@ -1,199 +1,271 @@
-/* .
-Ceci est un thème en mode sombre Vyper pour Mainsail
+/*
+    Thème sombre Vyper pour Mainsail
 */
 
+/* Variables de couleur */
 :root {
-    --Primary:        #282a36;    /*Voron:Black*/
-    --Secondary:      #ff5555;    /*Voron:Red*/
-    --c_blue:         #00eafb;    /*cryd_blue*/
-    --c_gray:         #2b2b2b;    /*cryd:grey*/
-    --Blue:           #00eafb; 
-    --Red:            #ff5555;
-    --Warnings:       #00eafb;
-    --Text:           #f8f8f2;
-    --DarkerText:     #f5f5f2;
-    --Background:     #44475a;
-    --DarkBackground: #1c1f2b; /*--DarkBackground: #282a36; */
-    --Toolbars:       #44475a;
-    --Sheets:         #282a36;   
+    --Primary:        #282a36;    /* Noir */
+    --Secondary:      #ff5555;    /* Rouge */
+    --c_blue:         #00eafb;    /* Bleu */
+    --c_gray:         #2b2b2b;    /* Gris */
+    --c_green:        #00ff00;    /* Vert fluo */
+    --Blue:           #00eafb;    /* Bleu */
+    --Red:            #ff5555;    /* Rouge */
+    --Warnings:       #00eafb;    /* Avertissements */
+    --Text:           #f8f8f2;    /* Couleur principale du texte */
+    --DarkerText:     #f5f5f2;    /* Couleur de texte plus foncée */
+    --Background:     #44475a;    /* Couleur de fond principale */
+    --DarkBackground: #1c1f2b;    /* Couleur de fond plus foncée */
+    --Toolbars:       #44475a;    /* Couleur des barres d'outils */
+    --Sheets:         #282a36;    /* Couleur des feuilles (composants UI) */
+    --violet:         #bf00ff;    /* Violet */
 }
 
-/* #nav-header .v-toolbar__title {
-    font-size: 24px;
-    vertical-align: middle;
-    color: #00eafb;
-    font-family: monospace;
+
+/* Styles généraux */
+
+/* Boutons */
+span.v-icon > svg > path {
+    fill: #CF00FF; /* Violet fluo */
 }
-*/
+span.v-btn__content > path {
+    fill: #CF00FF; 
+}
+
+
+
+
+
+
+/* Augmenter la visibilité des titres lors du survol */
+.menu-item-title:hover {
+    color: var(--Primary); /* Changer la couleur au survol */
+    background-color: var(--violet); /* Changer le fond au survol */
+    box-shadow: 0 0 10px var(--c_green); /* Ajouter une ombre externe */
+    transition: all 0.3s ease-in-out; /* Transition douce */
+}
+
+/* Effet de survol pour les icônes de menu */
+.menu-icon:hover {
+    color: var(--c_green);
+    transform: scale(1.1); /* Agrandir légèrement l'icône */
+    transition: transform 0.3s ease;
+}
+
+/* Styles supplémentaires pour les boutons lors du survol */
+span.v-btn__content:hover > path {
+    fill: var(--c_green); /* Changer la couleur de remplissage de l'icône du bouton */
+    transition: fill 0.3s ease-in-out;
+}
+
+/* Styles de survol pour les éléments de liste */
+.v-list-item--link:hover {
+    background-color: var(--c_gray); /* Fond plus clair au survol */
+    transition: background-color 0.2s ease-in-out;
+}
+
+
+
+
+
+
+
+
+
+/* Titres de menu */
+.menu-item-title {
+    color: var(--Text);
+    background-color: var(--DarkBackground);
+    padding: 0.5rem;
+    border-radius: 12px 4px 12px 4px;
+    box-shadow: inset 0 0 8px 0 var(--c_green);
+}
+
+.menu-item-title:active,
+.v-list-item--active .menu-item-title {
+    color: var(--c_green);
+}
+
+
+/* Icônes de menu */
+.menu-icon {
+    margin-right: 0.5rem;
+    font-size: 1.5rem;
+
+}
+
+/* Titres de barre d'outils */
 .v-toolbar .v-toolbar__title {
     font-size: 24px;
     vertical-align: middle;
-    color: var(--c_blue) !important;
-    font-family: cursive; /*monospace;*/
+    background: linear-gradient(to right, var(--violet), var(--c_green));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: calibri;
+    font-weight: bold;
 }
 
+/* Titres de cartes */
+.v-card__title {
+    justify-content: center;
+    display: flex;
+    width: 100%;
+}
 
-  
+/* Autres styles pour les titres de barre d'outils */
+.v-toolbar__title {
+    justify-content: center !important;
+    display: flex !important;
+    width: 100%;
+}
+
+/* Styles pour les avertissements */
 .v-application .warning {
-    background-color: var(--c_blue) !important; 
+    background-color: var(--c_blue) !important;
     border-color: var(--c_blue);
 }
 
+/* Styles pour les éléments primaires */
 .v-application .primary {
-    background-color: var(--c_grey) !important;
-    border-color: var(--c_blue) !important;
+    background: linear-gradient(to right, var(--violet), var(--c_green));
+    -webkit-background-clip: text;
+    
+    border-color: var(--c_green) !important;
 }
 
-.v-application .success--text {
-    color: var(--c_blue) !important;
-    caret-color: var(--c_blue) !important;
-}
-
+/* Styles pour les textes de succès */
+.v-application .success--text,
 .v-application .primary--text {
     color: var(--c_blue) !important;
     caret-color: var(--c_blue) !important;
 }
 
-.v-application a {
-    color: var(--c_blue);
+/* Styles généraux de l'application */
+.v-application {
+    border-radius: 10px !important;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.5) !important;
 }
 
+
+/* Styles pour les boutons d'avertissement */
 .v-btn:not(.v-btn--outlined).warning {
     color: var(--c_grey) !important;
 }
 
-.v-btn:not(.v-btn--outlined).accent, .v-btn:not(.v-btn--outlined).error, .v-btn:not(.v-btn--outlined).info, .v-btn:not(.v-btn--outlined).primary, .v-btn:not(.v-btn--outlined).secondary, .v-btn:not(.v-btn--outlined).success {
-    color: #f8f8f2 !important;
+
+/* Styles pour les autres boutons colorés */
+.v-btn:not(.v-btn--outlined).accent,
+.v-btn:not(.v-btn--outlined).error,
+.v-btn:not(.v-btn--outlined).info,
+.v-btn:not(.v-btn--outlined).primary,
+.v-btn:not(.v-btn--outlined).secondary,
+.v-btn:not(.v-btn--outlined).success {
+    color: var(--c_blue) !important; /* #f8f8f2 !important; */
 }
 
-.v-application .text-body-2, .v-application .text-button {
+
+
+/* Styles pour certains textes */
+.v-application .text-body-2,
+.v-application .text-button {
     color: var(--c_blue);
 }
 
+/* Styles pour les overlays de progression circulaire */
 .v-progress-circular__overlay .v-card__text {
-    stroke: var(--c_blue) !important;
+    stroke: var(--c_green) !important;
 }
 
+/* Styles pour le remplissage de la piste des sliders */
 .v-slider__track-fill.primary {
-    background-color: var(--c_blue) !important;
+    background-color: var(--c_green) !important;
     border-color: var(--c_blue) !important;
 }
 
+/* Styles pour le pouce des sliders */
 .v-slider__thumb.primary {
     background-color: var(--c_blue) !important;
-    border-color: var(--c_blue) !important;
+    border-color: var(--c_green) !important;
 }
 
-/*
-    CHANGE content of icons 
-    Material Desgin Icons can be found on https://pictogrammers.github.io/@mdi/font/5.2.45/
-*/
-
-/* "Cog"/Gearwheel to Wrench */
+/* Changement des icônes */
 .mdi-cog:before {
     content: "\F05B7";
 }
 
-/* Heatbed to Campfire */
-.mdi-radiator-disabled:before {
-    content: "\F0238";
-}
-
-/* Heatbed to Campfire */
+.mdi-radiator-disabled:before,
 .mdi-radiator:before {
     content: "\F0238";
 }
 
-/* Thermometer to Temp Chart */
 .mdi-thermometer-lines:before {
     content: "\F0FA7";
 }
 
-/* Controls to Camera Control Slider */
 .mdi-gamepad:before {
     content: "\F0B69";
 }
 
-/* Code-Tags to Keyboard */
 .mdi-code-tags:before {
     content: "\F0313";
 }
 
-/* Dipswitch to Tune */
 .mdi-dip-switch:before {
     content: "\F062E";
 }
 
-/* Home to Home Group */
 .mdi-home:before {
     content: "\F0DD4";
 }
 
-/* Arrow-collapse vertical to single bar collapse */
 .mdi-arrow-collapse-vertical:before {
-    content: "\F0622"
+    content: "\F0622";
 }
 
-/* Send arrow to telegram arrow */
 .mdi-send:before {
-    content: "\F0501"
+    content: "\F0501";
 }
 
-/* console to boxed console */
 .mdi-console-line:before {
-    content: "\F018D"
+    content: "\F018D";
 }
 
-/* "Cog"/Gearwheel to Wrench */
 .mdi-wrench:before {
     content: "\F0493";
 }
 
-/* Dashboard Monitor to Dashboard window */
 .mdi-monitor-dashboard:before {
     content: "\F0A1D";
 }
 
-/* History to Profile History */
 .mdi-history:before {
     content: "\F0B56";
 }
 
-/* Printer Dashboard to 3d Printer */
 .mdi-view-dashboard-outline:before {
     content: "\F042B";
 }
 
-/* ARRONDIR les angles des différentes fenêtres */
-/* Ajoutez la propriété "border-radius" aux classes CSS qui ciblent les éléments que vous souhaitez arrondir */
-/* Par exemple, arrondir les coins de la fenêtre principale, des barres d'outils, des boutons ou des cartes */
-
-/* Exemple pour arrondir les coins de la fenêtre principale */
+/* Arrondissement des coins */
 .v-application {
     border-radius: 10px !important;
-    box-shadow: 0 0 5px var(--c_blue) !important; /* Ajoute un cadre bleu cyan de 10px */
+    box-shadow: 0 0 5px var(--c_green) !important;
 }
 
-/* Exemple pour arrondir les coins des boutons */
 .v-btn {
     border-radius: 8px !important;
-    /* box-shadow: 0 0 5px var(--c_blue); /* Ajoute un cadre bleu cyan de 5px */
 }
 
-/* Exemple pour arrondir les coins des cartes */
+.v-btn.warning {
+    background-color: var(--c_green) !important;
+}
+
 .v-card {
     border-radius: 15px !important;
-    box-shadow: 0 0 5px var(--c_blue) !important; /* Ajoute un cadre bleu cyan de 10px */
+    box-shadow: 0 0 5px var(--c_green) !important;
 }
 
-/* Exemple pour arrondir les coins des champs de saisie */
 .v-text-field {
     border-radius: 3px !important;
-    box-shadow: 0 0 2px var(--c_blue) !important; /* Ajoute un cadre bleu cyan de 5px */
-}
-
-/* Exemple pour arrondir les coins d'éléments spécifiques avec une classe personnalisée */
-.classe-personnalisee-arrondie {
-    border-radius: 15px !important;
-    box-shadow: 0 0 5px var(--c_blue) !important; /* Ajoute un cadre bleu cyan de 5px */
+    box-shadow: 0 0 2px var(--c_green) !important;
 }
