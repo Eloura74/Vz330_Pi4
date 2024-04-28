@@ -19,6 +19,7 @@
     --Toolbars:       #44475a;    /* Couleur des barres d'outils */
     --Sheets:         #282a36;    /* Couleur des feuilles (composants UI) */
     --violet:         #bf00ff;    /* Violet */
+    --gris_metal:     #D4D4D4;
 }
 
 
@@ -64,21 +65,13 @@ span.v-btn__content:hover > path {
     transition: background-color 0.2s ease-in-out;
 }
 
-
-
-
-
-
-
-
-
 /* Titres de menu */
 .menu-item-title {
     color: var(--Text);
     background-color: var(--DarkBackground);
     padding: 0.5rem;
     border-radius: 12px 4px 12px 4px;
-    box-shadow: inset 0 0 8px 0 var(--c_green);
+    box-shadow: inset 0 0 8px 0 var(--gris_metal);
 }
 
 .menu-item-title:active,
@@ -260,10 +253,27 @@ span.v-btn__content:hover > path {
     background-color: var(--c_green) !important;
 }
 
+/* /* avec changerment de couleurs:  */ 
+
+/* Transition pour le cadre des cartes */
 .v-card {
+    border-radius: 15px !important;
+    transition: box-shadow 2s ease; /* Transition de 2 secondes pour la propriété box-shadow */
+    box-shadow: 0 0 5px var(--c_green) !important;
+}
+
+/* Au survol, changer la couleur du cadre */
+.v-card:hover {
+    box-shadow: 0 0 5px var(--violet) !important; /* Changer la couleur du cadre au survol */
+}
+
+/* sans changerment de couleurs:  */
+/* .v-card {
     border-radius: 15px !important;
     box-shadow: 0 0 5px var(--c_green) !important;
 }
+ */
+
 
 .v-text-field {
     border-radius: 3px !important;
