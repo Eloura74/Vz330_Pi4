@@ -20,48 +20,57 @@
     --Sheets:         #282a36;    /* Couleur des feuilles (composants UI) */
     --violet:         #bf00ff;    /* Violet */
     --gris_metal:     #D4D4D4;
+    --transition-duration: 0.3s;  /* Durée des transitions */
+    --transition-style: ease-in-out;  /* Style de transition */
 }
+
+
+
+
+
+
 
 
 /* Styles généraux */
 
 /* Boutons */
-span.v-icon > svg > path {
-    fill: #CF00FF; /* Violet fluo */
+span.v-icon > svg > path, span.v-btn__content > path {
+    fill: #CF00FF;
 }
-span.v-btn__content > path {
-    fill: #CF00FF; 
+ 
+.v-btn.warning .v-icon path {
+    fill: var(--violet);
 }
 
-
-
-
-
+.small-list-item .v-list-item__icon .v-icon path {
+    fill: var(--gris_metal);
+    filter: drop-shadow(0px 6px 12px rgba(0, 0, 0, 0.5));
+}
 
 /* Augmenter la visibilité des titres lors du survol */
 .menu-item-title:hover {
-    color: var(--Primary); /* Changer la couleur au survol */
-    background-color: var(--violet); /* Changer le fond au survol */
-    box-shadow: 0 0 10px var(--c_green); /* Ajouter une ombre externe */
-    transition: all 0.3s ease-in-out; /* Transition douce */
+    color: var(--Primary);
+    background-color: var(--violet);
+    box-shadow: 0 0 10px var(--c_green);
+    transition: all var(--transition-duration) var(--transition-style);
 }
 
 /* Effet de survol pour les icônes de menu */
 .menu-icon:hover {
     color: var(--c_green);
-    transform: scale(1.1); /* Agrandir légèrement l'icône */
-    transition: transform 0.3s ease;
+    transform: scale(1.3);
+    transition: transform var(--transition-duration) var(--transition-style);
 }
 
 /* Styles supplémentaires pour les boutons lors du survol */
 span.v-btn__content:hover > path {
-    fill: var(--c_green); /* Changer la couleur de remplissage de l'icône du bouton */
-    transition: fill 0.3s ease-in-out;
+    fill: var(--c_green);
+    transition: fill var(--transition-duration) var(--transition-style);
 }
 
 /* Styles de survol pour les éléments de liste */
 .v-list-item--link:hover {
-    background-color: var(--c_gray); /* Fond plus clair au survol */
+    background-color: var(--c_gray);
     transition: background-color 0.2s ease-in-out;
 }
 
@@ -79,12 +88,10 @@ span.v-btn__content:hover > path {
     color: var(--c_green);
 }
 
-
 /* Icônes de menu */
 .menu-icon {
     margin-right: 0.5rem;
     font-size: 1.5rem;
-
 }
 
 /* Titres de barre d'outils */
@@ -119,10 +126,10 @@ span.v-btn__content:hover > path {
 }
 
 /* Styles pour les éléments primaires */
+
 .v-application .primary {
     background: linear-gradient(to right, var(--violet), var(--c_green));
     -webkit-background-clip: text;
-    
     border-color: var(--c_green) !important;
 }
 
@@ -139,12 +146,10 @@ span.v-btn__content:hover > path {
     box-shadow: 0 0 10px rgba(0, 255, 0, 0.5) !important;
 }
 
-
 /* Styles pour les boutons d'avertissement */
 .v-btn:not(.v-btn--outlined).warning {
-    color: var(--c_grey) !important;
+    color: var(--c_gray) !important;
 }
-
 
 /* Styles pour les autres boutons colorés */
 .v-btn:not(.v-btn--outlined).accent,
@@ -153,10 +158,8 @@ span.v-btn__content:hover > path {
 .v-btn:not(.v-btn--outlined).primary,
 .v-btn:not(.v-btn--outlined).secondary,
 .v-btn:not(.v-btn--outlined).success {
-    color: var(--c_blue) !important; /* #f8f8f2 !important; */
+    color: var(--c_blue) !important;
 }
-
-
 
 /* Styles pour certains textes */
 .v-application .text-body-2,
@@ -185,56 +188,43 @@ span.v-btn__content:hover > path {
 .mdi-cog:before {
     content: "\F05B7";
 }
-
 .mdi-radiator-disabled:before,
 .mdi-radiator:before {
     content: "\F0238";
 }
-
 .mdi-thermometer-lines:before {
     content: "\F0FA7";
 }
-
 .mdi-gamepad:before {
     content: "\F0B69";
 }
-
 .mdi-code-tags:before {
     content: "\F0313";
 }
-
 .mdi-dip-switch:before {
     content: "\F062E";
 }
-
 .mdi-home:before {
     content: "\F0DD4";
 }
-
 .mdi-arrow-collapse-vertical:before {
     content: "\F0622";
 }
-
 .mdi-send:before {
     content: "\F0501";
 }
-
 .mdi-console-line:before {
     content: "\F018D";
 }
-
 .mdi-wrench:before {
     content: "\F0493";
 }
-
 .mdi-monitor-dashboard:before {
     content: "\F0A1D";
 }
-
 .mdi-history:before {
     content: "\F0B56";
 }
-
 .mdi-view-dashboard-outline:before {
     content: "\F042B";
 }
@@ -250,10 +240,8 @@ span.v-btn__content:hover > path {
 }
 
 .v-btn.warning {
-    background-color: var(--c_green) !important;
+    background: var(--c_green) !important;
 }
-
-/* /* avec changerment de couleurs:  */ 
 
 /* Transition pour le cadre des cartes */
 .v-card {
@@ -264,18 +252,16 @@ span.v-btn__content:hover > path {
 
 /* Au survol, changer la couleur du cadre */
 .v-card:hover {
-    box-shadow: 0 0 5px var(--violet) !important; /* Changer la couleur du cadre au survol */
+    box-shadow: 0 0 20px var(--violet) !important;
 }
 
-/* sans changerment de couleurs:  */
-/* .v-card {
-    border-radius: 15px !important;
-    box-shadow: 0 0 5px var(--c_green) !important;
-}
- */
-
-
+/* Styles pour les champs de texte */
 .v-text-field {
     border-radius: 3px !important;
     box-shadow: 0 0 2px var(--c_green) !important;
+}
+
+/* Effet de clic pour les boutons */
+.v-btn:active {
+    transform: scale(0.95);
 }
