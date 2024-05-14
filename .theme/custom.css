@@ -265,3 +265,8 @@ span.v-btn__content:hover > path {
 .v-btn:active {
     transform: scale(0.95);
 }
+
+span.subheading {
+  text-decoration: underline;
+}
+
