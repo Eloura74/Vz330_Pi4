@@ -1,272 +1,215 @@
-/*
-    Thème sombre Vyper pour Mainsail
-*/
+/* ==============================================
+ * Thème Mainsail personnalisé 
+ * Fusionné : Transparence & Style Graphite Robotic
+ * Auteur : Quentin | Avril 2025
+ * ============================================== */
 
-/* Variables de couleur */
+/* === 🎨 Variables globales === */
 :root {
-    --Primary:        #282a36;    /* Noir */
-    --Secondary:      #ff5555;    /* Rouge */
-    --c_blue:         #00eafb;    /* Bleu */
-    --c_gray:         #2b2b2b;    /* Gris */
-    --c_green:        #00ff00;    /* Vert fluo */
-    --Blue:           #00eafb;    /* Bleu */
-    --Red:            #ff5555;    /* Rouge */
-    --Warnings:       #00eafb;    /* Avertissements */
-    --Text:           #f8f8f2;    /* Couleur principale du texte */
-    --DarkerText:     #f5f5f2;    /* Couleur de texte plus foncée */
-    --Background:     #44475a;    /* Couleur de fond principale */
-    --DarkBackground: #1c1f2b;    /* Couleur de fond plus foncée */
-    --Toolbars:       #44475a;    /* Couleur des barres d'outils */
-    --Sheets:         #282a36;    /* Couleur des feuilles (composants UI) */
-    --violet:         #bf00ff;    /* Violet */
-    --gris_metal:     #D4D4D4;
-    --transition-duration: 0.3s;  /* Durée des transitions */
-    --transition-style: ease-in-out;  /* Style de transition */
+    --Primary: #1e2227;
+    --Secondary: #2e343b;
+    --Accent: #555f6b;
+    --Highlight: #3b434d;
+    --Text: #e0e0e0;
+    --MutedText: #888;
+    --BorderColor: rgba(255, 255, 255, 0.06);
+    --BorderRadius: 4px;
+    --TransitionDuration: 0.2s;
+    --TransitionStyle: ease-in-out;
+    --ShadowLight: 0 2px 6px rgba(0, 0, 0, 0.2);
+    --ShadowHover: 0 4px 12px rgba(0, 0, 0, 0.3);
+
+    --v-warning-base: #6f7b8c !important;
+    --v-warning-darken1: #5d6875 !important;
+
+    --ElegantGlow: 0 0 12px rgba(100, 200, 255, 0.3);
+    --ElegantAccent: linear-gradient(135deg, #7f8c8d, #2c3e50);
+    --GlassEdge: inset 0 0 0.6px rgba(255, 255, 255, 0.15);
 }
 
-
-
-
-
-
-
-
-/* Styles généraux */
-
-/* Boutons */
-span.v-icon > svg > path, span.v-btn__content > path {
-    fill: #CF00FF;
-}
- 
-.v-btn.warning .v-icon path {
-    fill: var(--violet);
+/* === 🖼️ Fond global avec image et filtre === */
+v-main__wrap {
+    position: relative;
+    background-image: url("http://192.168.1.130/server/files/config/.theme/main-background.jpg");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
 }
 
-.small-list-item .v-list-item__icon .v-icon path {
-    fill: var(--gris_metal);
-    filter: drop-shadow(0px 6px 12px rgba(0, 0, 0, 0.5));
+v-main::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.1);
+    pointer-events: none;
+    z-index: 1;
 }
 
-/* Augmenter la visibilité des titres lors du survol */
-.menu-item-title:hover {
-    color: var(--Primary);
-    background-color: var(--violet);
-    box-shadow: 0 0 10px var(--c_green);
-    transition: all var(--transition-duration) var(--transition-style);
-}
-
-/* Effet de survol pour les icônes de menu */
-.menu-icon:hover {
-    color: var(--c_green);
-    transform: scale(1.3);
-    transition: transform var(--transition-duration) var(--transition-style);
-}
-
-/* Styles supplémentaires pour les boutons lors du survol */
-span.v-btn__content:hover > path {
-    fill: var(--c_green);
-    transition: fill var(--transition-duration) var(--transition-style);
-}
-
-/* Styles de survol pour les éléments de liste */
-.v-list-item--link:hover {
-    background-color: var(--c_gray);
-    transition: background-color 0.2s ease-in-out;
-}
-
-/* Titres de menu */
-.menu-item-title {
+/* === 🧱 Cartes & Conteneurs === */
+.v-card,
+.v-card.v-sheet,
+.os-content {
+    background: rgba(46, 52, 59, 0.5);
     color: var(--Text);
-    background-color: var(--DarkBackground);
-    padding: 0.5rem;
-    border-radius: 12px 4px 12px 4px;
-    box-shadow: inset 0 0 8px 0 var(--gris_metal);
+    border-radius: var(--BorderRadius);
+    border: 1px solid var(--BorderColor);
+    box-shadow: var(--ShadowLight), var(--GlassEdge);
+    padding: 10px;
+    backdrop-filter: blur(14px);
+    transition: all var(--TransitionDuration) var(--TransitionStyle);
 }
 
-.menu-item-title:active,
-.v-list-item--active .menu-item-title {
-    color: var(--c_green);
-}
-
-/* Icônes de menu */
-.menu-icon {
-    margin-right: 0.5rem;
-    font-size: 1.5rem;
-}
-
-/* Titres de barre d'outils */
-.v-toolbar .v-toolbar__title {
-    font-size: 24px;
-    vertical-align: middle;
-    background: linear-gradient(to right, var(--violet), var(--c_green));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-family: calibri;
-    font-weight: bold;
-}
-
-/* Titres de cartes */
-.v-card__title {
-    justify-content: center;
-    display: flex;
-    width: 100%;
-}
-
-/* Autres styles pour les titres de barre d'outils */
-.v-toolbar__title {
-    justify-content: center !important;
-    display: flex !important;
-    width: 100%;
-}
-
-/* Styles pour les avertissements */
-.v-application .warning {
-    background-color: var(--c_blue) !important;
-    border-color: var(--c_blue);
-}
-
-/* Styles pour les éléments primaires */
-
-.v-application .primary {
-    background: linear-gradient(to right, var(--violet), var(--c_green));
-    -webkit-background-clip: text;
-    border-color: var(--c_green) !important;
-}
-
-/* Styles pour les textes de succès */
-.v-application .success--text,
-.v-application .primary--text {
-    color: var(--c_blue) !important;
-    caret-color: var(--c_blue) !important;
-}
-
-/* Styles généraux de l'application */
-.v-application {
-    border-radius: 10px !important;
-    box-shadow: 0 0 10px rgba(0, 255, 0, 0.5) !important;
-}
-
-/* Styles pour les boutons d'avertissement */
-.v-btn:not(.v-btn--outlined).warning {
-    color: var(--c_gray) !important;
-}
-
-/* Styles pour les autres boutons colorés */
-.v-btn:not(.v-btn--outlined).accent,
-.v-btn:not(.v-btn--outlined).error,
-.v-btn:not(.v-btn--outlined).info,
-.v-btn:not(.v-btn--outlined).primary,
-.v-btn:not(.v-btn--outlined).secondary,
-.v-btn:not(.v-btn--outlined).success {
-    color: var(--c_blue) !important;
-}
-
-/* Styles pour certains textes */
-.v-application .text-body-2,
-.v-application .text-button {
-    color: var(--c_blue);
-}
-
-/* Styles pour les overlays de progression circulaire */
-.v-progress-circular__overlay .v-card__text {
-    stroke: var(--c_green) !important;
-}
-
-/* Styles pour le remplissage de la piste des sliders */
-.v-slider__track-fill.primary {
-    background-color: var(--c_green) !important;
-    border-color: var(--c_blue) !important;
-}
-
-/* Styles pour le pouce des sliders */
-.v-slider__thumb.primary {
-    background-color: var(--c_blue) !important;
-    border-color: var(--c_green) !important;
-}
-
-/* Changement des icônes */
-.mdi-cog:before {
-    content: "\F05B7";
-}
-.mdi-radiator-disabled:before,
-.mdi-radiator:before {
-    content: "\F0238";
-}
-.mdi-thermometer-lines:before {
-    content: "\F0FA7";
-}
-.mdi-gamepad:before {
-    content: "\F0B69";
-}
-.mdi-code-tags:before {
-    content: "\F0313";
-}
-.mdi-dip-switch:before {
-    content: "\F062E";
-}
-.mdi-home:before {
-    content: "\F0DD4";
-}
-.mdi-arrow-collapse-vertical:before {
-    content: "\F0622";
-}
-.mdi-send:before {
-    content: "\F0501";
-}
-.mdi-console-line:before {
-    content: "\F018D";
-}
-.mdi-wrench:before {
-    content: "\F0493";
-}
-.mdi-monitor-dashboard:before {
-    content: "\F0A1D";
-}
-.mdi-history:before {
-    content: "\F0B56";
-}
-.mdi-view-dashboard-outline:before {
-    content: "\F042B";
-}
-
-/* Arrondissement des coins */
-.v-application {
-    border-radius: 10px !important;
-    box-shadow: 0 0 5px var(--c_green) !important;
-}
-
-.v-btn {
-    border-radius: 8px !important;
-}
-
-.v-btn.warning {
-    background: var(--c_green) !important;
-}
-
-/* Transition pour le cadre des cartes */
-.v-card {
-    border-radius: 15px !important;
-    transition: box-shadow 2s ease; /* Transition de 2 secondes pour la propriété box-shadow */
-    box-shadow: 0 0 5px var(--c_green) !important;
-}
-
-/* Au survol, changer la couleur du cadre */
 .v-card:hover {
-    box-shadow: 0 0 20px var(--violet) !important;
+    box-shadow: var(--ShadowHover), 0 0 10px rgba(100, 200, 255, 0.25);
+    animation: glow 1.5s infinite alternate;
 }
 
-/* Styles pour les champs de texte */
-.v-text-field {
-    border-radius: 3px !important;
-    box-shadow: 0 0 2px var(--c_green) !important;
+/* === 🧭 Sidebar === */
+.v-navigation-drawer,
+.v-navigation-drawer__content {
+    background-color: transparent !important;
 }
 
-/* Effet de clic pour les boutons */
-.v-btn:active {
-    transform: scale(0.95);
+.sidebar-item {
+    color: var(--Text);
+    padding: 10px 8px;
+    margin: 6px 0;
+    border-radius: var(--BorderRadius);
+    background-color: transparent;
+    font-size: 14px;
+    font-weight: 500;
+    border: 1px solid transparent;
+    transition: all var(--TransitionDuration) var(--TransitionStyle);
 }
 
-span.subheading {
-    text-decoration: underline;
+.sidebar-item:hover,
+.sidebar-item.active {
+    background-color: var(--Accent);
+    color: var(--Highlight);
+    border-color: var(--Highlight);
+    box-shadow: var(--ElegantGlow);
 }
 
+/* === 📌 Headers et titres === */
+.v-toolbar__content {
+    background: var(--ElegantAccent);
+    color: var(--Text);
+    border-radius: var(--BorderRadius);
+    padding: 10px;
+    box-shadow: var(--ShadowLight), inset 0 0 1px rgba(255,255,255,0.08);
+    backdrop-filter: blur(10px);
+    transition: all var(--TransitionDuration) var(--TransitionStyle);
+}
+
+.v-list-item__title,
+menu-item-title {
+    text-align: center;
+}
+
+/* === 🔘 Boutons === */
+.v-btn {
+    border-radius: var(--BorderRadius);
+    font-weight: 600;
+    background-color: var(--Accent);
+    color: var(--Text);
+    backdrop-filter: blur(3px);
+    box-shadow: inset 0 0 0.8px rgba(255,255,255,0.05);
+    transition: all var(--TransitionDuration) var(--TransitionStyle);
+}
+
+.v-btn:hover {
+    background-color: var(--Highlight);
+    color: #fff;
+    box-shadow: var(--ShadowHover), 0 0 8px rgba(150, 220, 255, 0.3);
+    animation: glow 1.5s infinite alternate;
+}
+
+.v-btn .v-icon {
+    color: var(--Text);
+    transition: transform 0.2s ease-in-out;
+}
+
+.v-btn:hover .v-icon {
+    transform: scale(1.1);
+    color: var(--Highlight);
+}
+
+/* Boutons spéciaux warning */
+.v-btn.theme--dark.warning {
+    background-color: #6f7b8c !important;
+    color: #ffffff !important;
+    border: 1px solid #8894a1;
+    box-shadow: var(--ShadowLight);
+    transition: all var(--TransitionDuration);
+}
+
+.v-btn.theme--dark.warning:hover {
+    background-color: #8492a3 !important;
+    box-shadow: var(--ShadowHover);
+}
+
+/* === 🧩 Tableaux === */
+.v-data-table td,
+.v-data-table th {
+    background-color: transparent;
+    color: var(--Text);
+    text-align: center;
+    opacity: 0.85;
+}
+
+tr:hover {
+    background-color: rgba(30, 30, 46, 0.7) !important;
+}
+
+/* === 🎛 Sliders === */
+.v-slider__track-fill,
+.v-slider__thumb {
+    background-color: var(--Highlight) !important;
+    border: 2px solid var(--Primary);
+}
+
+/* === 🖥 Console et graphiques === */
+.console,
+.chart-container {
+    background-color: rgba(30, 34, 39, 0.5);
+    color: var(--MutedText);
+    padding: 10px;
+    border: 1px solid var(--BorderColor);
+    border-radius: var(--BorderRadius);
+    box-shadow: var(--ShadowLight), var(--GlassEdge);
+    backdrop-filter: blur(14px);
+}
+
+/* === 📊 Badges dynamiques === */
+.status-badge {
+    padding: 2px 8px;
+    border-radius: 5px;
+    font-weight: bold;
+    background-color: #3c8c59;
+    color: #111;
+    box-shadow: 0 0 4px rgba(60, 140, 89, 0.3);
+}
+.status-badge.warning { background-color: #c2a500; }
+.status-badge.danger  { background-color: #b84747; }
+
+/* === ✨ Animations === */
+@keyframes glow {
+    0%, 100% { box-shadow: 0 0 10px var(--Highlight); }
+    50% { box-shadow: 0 0 20px var(--Highlight); }
+}
+
+.v-image__image {
+    opacity: 0.3;
+    box-shadow: 20px 20px 20px var(--Highlight);
+}
+
+.v-expansion-panel-content__wrap {
+    background-color: rgba(30, 34, 39, 0.5);
+    border-radius: var(--BorderRadius);
+    border: 1px solid var(--BorderColor);
+    margin-top: 6px;
+    padding: 10px;
+    backdrop-filter: blur(12px);
+    transition: all 0.3s ease-in-out;
+}
